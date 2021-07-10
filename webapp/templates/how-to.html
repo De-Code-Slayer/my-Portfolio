@@ -1,0 +1,25 @@
+
+
+
+
+{% for x in how_to %}
+<div class="wa-bg">
+    <div class="wa">
+        <div class="wa-head">
+            <h3>{{x.title}}</h3>
+            {{x.content}}
+        </div>
+        <a href="" target="_blank" rel="noopener noreferrer">here</a>
+    </div>
+</div>
+{% endfor%}
+<article>
+{% if view %}
+<h1>{{view.title}}</h1>
+<div>
+    {{view.content}}
+</div>
+</article>
+{% endif %}
+
+

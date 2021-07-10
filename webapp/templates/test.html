@@ -1,0 +1,15 @@
+<h1>all how to links to thee right side</h1>
+
+{% for x in how_to %}
+
+
+
+<div class="wa-bg">
+    <div class="wa">
+        <div class="wa-head">
+         
+        </div>
+        <a href={{url_for("views.view_how_to", id=x.id)}} rel="noopener noreferrer">{{x.title}}</a>
+    </div>
+</div>
+{% endfor %}
