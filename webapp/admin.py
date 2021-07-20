@@ -11,7 +11,7 @@ admin = Blueprint("admin", __name__)
 
 
 @admin.route("/admin", methods=["GET", "POST"])
-#@login_required
+@login_required
 def administrator():
      if request.method == "POST":
          # this is to seperate the admin page requests payloads
@@ -55,16 +55,7 @@ def administrator():
                 title = str(request.form.get("title"))
                 content = str(request.form.get("content"))
 
-                new_howto = Howto(
-                    title=title, content=content)
-                db.session.add(new_howto)
-                db.session.commit()
-                print("added")
-                flash("New How-To Added")
-         
-         
-         
-         
+     
          
          
          

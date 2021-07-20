@@ -55,7 +55,7 @@ def whatsapp():
 def how_to():
 
     how_to = Howto.query.all()
-    return render_template("test.html", how_to=how_to)
+    return render_template("how-to.html", how_to=how_to)
 
 
 @views.route("/how_to/<id>")

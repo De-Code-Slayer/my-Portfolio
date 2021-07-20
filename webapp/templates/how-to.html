@@ -1,25 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
 
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">How To</span>
+                </a>
+                {% for x in how_to %}
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li class="nav-item">
+                        <a href={{url_for("views.view_how_to", id=x.id)}} class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">{{x.title}}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+                </ul>
+                <hr>
 
-
-
-{% for x in how_to %}
-<div class="wa-bg">
-    <div class="wa">
-        <div class="wa-head">
-            <h3>{{x.title}}</h3>
-            {{x.content}}
+            </div>
         </div>
-        <a href="" target="_blank" rel="noopener noreferrer">here</a>
+        <div class="col py-3">
+        {% if view %}
+        <h1>{{view.title}}</h1>
+        <div>
+            {{view.content}}
+        </div>
+        </article>
+        {% endif %}
+
+        {% if not view %}
+        <p> ....content here</p>
+        {% endif %}
+        </div>
     </div>
 </div>
-{% endfor%}
-<article>
-{% if view %}
-<h1>{{view.title}}</h1>
-<div>
-    {{view.content}}
-</div>
-</article>
-{% endif %}
+
+{% endblock %}
+
+
+
 
 
