@@ -18,6 +18,9 @@ i {
     padding: 15px;
     color: #fff;
 }
+.navbar{
+    padding: 0 !important;
+}
 
 .navbar-mainbg {
     background-color: #5161ce;
@@ -619,9 +622,14 @@ body {
     margin-top: 15px;
 }
 
-.wa-search{
+.wa-search {
     position: relative;
-    left:60%;
+    left: 60%;
     width: 30%;
 
+}
+
+/* ---------- university  css starts  here */
+h2{
+    text-align: center;
 }

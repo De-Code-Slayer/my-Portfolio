@@ -64,3 +64,15 @@ def view_how_to(id):
     how_to = Howto.query.all()
     view = Howto.query.get(ident)
     return render_template("how-to.html", how_to=how_to, view=view)
+
+
+@views.route("/university")
+def university():
+
+    return render_template("university.html")
+
+
+@views.route("/feed")
+def feed():
+
+    return render_template("feed.html")
