@@ -18,7 +18,24 @@ class Articles(db.Model):
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(150))
-    password = db.Column(db.String(150))
+    first_name = db.Column(db.String())
+    last_name = db.Column(db.String())
+    nationality = db.Column(db.String())
+    age = db.Column(db.Integer())
+    school = db.Column(db.String(100))
+    course = db.Column(db.String())
+    degree = db.Column(db.String())
+    university = db.Column(db.String())
+    admission_status = db.Column(db.String())
+    email = db.Column(db.String())
+    phone = db.Column(db.String())
+    occupation = db.Column(db.String())
+    password = db.Column(db.String())
+    conditional_acceptance = db.Column(db.Integer())
+    admission = db.Column(db.Integer())
+    visa = db.Column(db.Integer())
+    flight = db.Column(db.Integer())
+    arrival = db.Column(db.Integer())
     
 #-------------------------------  end of database for blog -------------------------------------
 
@@ -35,3 +52,10 @@ class Howto(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String())
     content = db.Column(db.String())
+
+
+# ---------- students section---------
+
+
+  
+    

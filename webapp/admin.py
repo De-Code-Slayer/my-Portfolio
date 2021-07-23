@@ -23,7 +23,6 @@ def administrator():
                 articletitle = str(request.form.get("articletitle"))
                 articles = str(request.form.get("articles"))
                 author = str(request.form.get("author"))
-                print(articles, articletitle, author)
 
                 new_article = Articles(
             articles=articles, author=author, articletitle=articletitle)
@@ -56,9 +55,13 @@ def administrator():
                 content = str(request.form.get("content"))
 
      
-         
-         
-         
+                new_howto = Howto(
+                    title=title, content=content)
+                db.session.add(new_howto)
+                db.session.commit()
+                print("added")
+                flash("Howto updated")
+
          
          
          
