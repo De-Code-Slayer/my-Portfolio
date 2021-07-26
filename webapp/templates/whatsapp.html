@@ -9,6 +9,7 @@
         <div class="form-group">
             <label for="exampleFormControlSelect1">Filter By</label>
             <select class="form-control" id="exampleFormControlSelect1" name="category">
+                <option disabled value="" selected>Filter by</option>
                 <option>Easter mediterian</option>
                 <option>Near East</option>
                 <option>Cyprus International University</option>
@@ -32,12 +33,14 @@
     <div class="wa-bg">
         <div class="wa"> 
            <div class="wa-head"><h3>{{x.name}}</h3></div> 
-           <a href="" target="_blank" rel="noopener noreferrer">lINK TO A WHATS APP GROUP HERE</a>
+           <a href={{x.link}} target="_blank" rel="noopener noreferrer">{{x.link}}</a>
         </div>
     </div>
     {% endfor%}
     {% endif %}
+
     {% if not whatsapp %}
+    {%endif%}
 </div>
 
 {% endblock %}
