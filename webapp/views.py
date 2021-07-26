@@ -29,7 +29,7 @@ def home():
     post_id = db.session.query(Articles.id).order_by(
         Articles.date.desc()).limit(5).all()
 
-    return render_template("index.html", user=current_user ,content=post,  post_title=post_title, post_date=post_date, post_author=post_author, post_id=post_id)
+    return render_template("index.html", user=current_user, content=post,  post_title=post_title, post_date=post_date, post_author=post_author, post_id=post_id,  id="!!")
 
 
 @views.route("/<id>")
@@ -37,7 +37,7 @@ def more(id):
     ident = id
 
     post = Articles.query.get(ident)
-    return render_template("more_post.html", content=post, user=current_user)
+    return render_template("more_post.html", content=post, user=current_user,  id=ident)
 
 
 @views.route("/whatsapp", methods=["GET", "POST"])
@@ -47,17 +47,17 @@ def whatsapp():
         category = Whatsapp.query.filter_by(institute=institute).all()
         if category:
             whatsapp = category
-            return render_template("whatsapp.html", whatsapp, user=current_user)
+            return render_template("whatsapp.html", whatsapp, user=current_user,  id="!!")
     # Queries to database to get All the whatsapp links
     whatsapp_groups = db.session.query(Whatsapp).all()
-    return render_template("whatsapp.html", whatsapp=whatsapp_groups, user=current_user)
+    return render_template("whatsapp.html", whatsapp=whatsapp_groups, user=current_user,  id="!!")
 
 
 @views.route("/how")
 def how_to():
 
     how_to = Howto.query.all()
-    return render_template("how-to.html", how_to=how_to, user=current_user)
+    return render_template("how-to.html", how_to=how_to, user=current_user,  id="!!")
 
 
 @views.route("/how_to/<id>")
@@ -65,32 +65,32 @@ def view_how_to(id):
     ident = id
     how_to = Howto.query.all()
     view = Howto.query.get(ident)
-    return render_template("how-to.html", how_to=how_to, view=view, user=current_user)
+    return render_template("how-to.html", how_to=how_to, view=view, user=current_user,  id="!!")
 
 
 @views.route("/university")
 def university():
 
-    return render_template("university.html", user=current_user)
+    return render_template("university.html", user=current_user,  id="!!")
 
 
 @views.route("/feed", methods=["GET", "POST"])
 @login_required
 def feed():
-  if request.method == "POST":
+    if request.method == "POST":
         school = str(request.form.get("university"))
         course = str(request.form.get("course"))
         degree = str(request.form.get("degree"))
         email = current_user.email
         application = User.query.filter_by(email=email).first()
         print(application)
-        application.university = school 
+        application.university = school
         application.course = course
         application.degree = degree
         db.session.commit()
         flash("Application Submitted")
 
-  return render_template("feed.html", student=current_user, user=current_user)
+    return render_template("feed.html", student=current_user, user=current_user,  id="!!")
 
 
 @views.route("/signup", methods=["GET", "POST"])
@@ -104,39 +104,39 @@ def signup():
         phone = str(request.form.get("phone"))
         occupation = str(request.form.get("occupation"))
         password = str(request.form.get("password"))
-        
+
         check = User.query.filter_by(
             email=email).first()
         if check:
             flash("An account with this email already exist please Login ")
-            abort(300)
+        else:
+            application = User(first_name=first_name, last_name=last_name, nationality=nationality,
+                               age=age, email=email, phone=phone, occupation=occupation, password=password)
+            db.session.add(application)
+            db.session.commit()
 
-        application = User(first_name=first_name,last_name=last_name,nationality=nationality,age=age,email=email,phone=phone,occupation=occupation,password=password)
-        db.session.add(application)
-        db.session.commit()
-
-        user = User.query.filter_by(
-            email=email, password=password).first()
-        if user:
-           login_user(user, remember=True)
-           return redirect(url_for("views.feed"))
-        
+            user = User.query.filter_by(
+                email=email, password=password).first()
+            if user:
+                login_user(user, remember=True)
+                return redirect(url_for("views.feed"))
 
     return render_template("sign_up.html")
 
-@views.route("/signin")
+
+@views.route("/signin", methods=["GET", "POST"])
 def signin():
     if request.method == "POST":
-       
+
         email = str(request.form.get("email"))
         password = str(request.form.get("password"))
 
         check = User.query.filter_by(
             email=email, password=password).first()
         if check:
-    
-           login_user(check, remember=True)
-           return redirect(url_for("views.feed"))
+
+            login_user(check, remember=True)
+            return redirect(url_for("views.feed"))
         else:
             flash("Email or Password is not correct")
 
@@ -145,5 +145,5 @@ def signin():
 
 @views.route("/logout")
 def logout():
-   logout_user()
-   return redirect(url_for("views.signin"))
+    logout_user()
+    return redirect(url_for("views.signin"))

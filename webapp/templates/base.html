@@ -46,12 +46,15 @@
                     <div class="left"></div>
                     <div class="right"></div>
                 </div>
-                <li class="nav-item {% if request.path == '/' %} active {% endif %}">
+                <li class="nav-item {% if request.path == '/' or id in request.path %} active {% endif %}">
                     <a class="nav-link" href="/"><i class="fas fa-blog"></i>Blog</a>
                 </li>
+                
+                {%if user.is_authenticated %}
                 <li class="nav-item {% if request.path == '/feed' %} active {% endif %}">
                     <a class="nav-link" href="/feed"><i class="fas fas fa-rss-square"></i>Feed</a>
                 </li>
+                {%endif%}
                 <li class="nav-item {% if request.path == '/how' or '/how_to' in request.path  %} active {% endif %}">
                     <a class="nav-link" href="/how"><i class="fas fa-info-circle"></i>How To</a>
                 </li>
@@ -125,6 +128,15 @@
                             <li class="menu-item menu-item-type-post_type menu-item-object-product">
                                 <a href="#">University</a>
                             </li>
+                            <li class="menu-item menu-item-type-post_type menu-item-object-product">
+                                <a href="#">University</a>
+                            </li>
+                            <li class="menu-item menu-item-type-post_type menu-item-object-product">
+                                <a href="#">University</a>
+                            </li>
+                            <li class="menu-item menu-item-type-post_type menu-item-object-product">
+                                <a href="#">University</a>
+                            </li>
                         </ul>
                         </div>
                     </div>
@@ -137,6 +149,15 @@
                             </li>
                             <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
                                 <a href="#">News</a>
+                            </li>
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                <a href="#">Careers</a>
+                            </li>
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                <a href="#">Careers</a>
+                            </li>
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                <a href="#">Careers</a>
                             </li>
                             <li class="menu-item menu-item-type-post_type menu-item-object-page">
                                 <a href="#">Careers</a>
