@@ -45,6 +45,7 @@ def whatsapp():
     if request.method == "POST":
         institute = request.form.get("category")
         category = Whatsapp.query.filter_by(institute=institute).all()
+        print(category)
         if category:
             whatsapp = category
             return render_template("whatsapp.html", whatsapp, user=current_user,  id="!!")
@@ -74,9 +75,9 @@ def university():
     return render_template("university.html", user=current_user,  id="!!")
 
 
-@views.route("/feed", methods=["GET", "POST"])
+@views.route("/profile", methods=["GET", "POST"])
 @login_required
-def feed():
+def profile():
     if request.method == "POST":
         school = str(request.form.get("university"))
         course = str(request.form.get("course"))
@@ -90,7 +91,7 @@ def feed():
         db.session.commit()
         flash("Application Submitted")
 
-    return render_template("feed.html", student=current_user, user=current_user,  id="!!")
+    return render_template("profile.html", student=current_user, user=current_user,  id="!!")
 
 
 @views.route("/signup", methods=["GET", "POST"])
@@ -119,7 +120,7 @@ def signup():
                 email=email, password=password).first()
             if user:
                 login_user(user, remember=True)
-                return redirect(url_for("views.feed"))
+                return redirect(url_for("views.profile"))
 
     return render_template("sign_up.html")
 
@@ -136,7 +137,7 @@ def signin():
         if check:
 
             login_user(check, remember=True)
-            return redirect(url_for("views.feed"))
+            return redirect(url_for("views.profile"))
         else:
             flash("Email or Password is not correct")
 
@@ -147,3 +148,9 @@ def signin():
 def logout():
     logout_user()
     return redirect(url_for("views.signin"))
+
+
+@views.errorhandler(404)
+def page_not_found(e):
+    # note that we set the 404 status explicitly
+    return render_template('404.html'), 404

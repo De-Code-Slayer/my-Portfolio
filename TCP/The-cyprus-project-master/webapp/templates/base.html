@@ -33,7 +33,7 @@
 
 </head>
 
-<body>
+<body onload="myFunction()">
     <nav class="navbar navbar-expand-custom navbar-mainbg">
         <div class="navbar-brand navbar-logo" href="#">Turkey</div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -50,17 +50,17 @@
                     <a class="nav-link" href="/"><i class="fas fa-blog"></i>Blog</a>
                 </li>
                 
-                {%if user.is_authenticated %}
+                <!-- {%if user.is_authenticated %}
                 <li class="nav-item {% if request.path == '/feed' %} active {% endif %}">
                     <a class="nav-link" href="/feed"><i class="fas fas fa-rss-square"></i>Feed</a>
                 </li>
-                {%endif%}
+                {%endif%} -->
                 <li class="nav-item {% if request.path == '/how' or '/how_to' in request.path  %} active {% endif %}">
                     <a class="nav-link" href="/how"><i class="fas fa-info-circle"></i>How To</a>
                 </li>
                 {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="fas fa-briefcase"></i>Jobs</a>
+                <li class="nav-item {% if request.path == '/profile' in request.path  %} active {% endif %}">
+                    <a class="nav-link" href="/profile"><i class="fas fa-briefcase"></i>Profile</a>
                 </li>
                 {%endif%}
                 <li class="nav-item {% if request.path == '/university' %} active {% endif %} ">
@@ -72,7 +72,7 @@
                 </li>
                 {% if not user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="btn btn-primary" href="/signin" role="button">Sign In</a>
+                    <a class="btn btn-primary signin" href="/signin" role="button">Sign In</a>
                 </li>
                 <li class="nav-item">
                     <a class="btn btn-secondary" href="/signup"><i class="far  fa-sign-in"></i>Sign Up</a>
@@ -96,8 +96,12 @@
   {% endblock %}
     <!-- End of blogs mini displays -->
 
-
-
+    <!-- Loader div -->
+    <div id="load"></div>
+    <div id="loader">
+    </div>
+   
+    
     <footer>
 
         <div class="pg-footer">
@@ -120,7 +124,7 @@
                             <h2 class="footer-menu-name"> Welcome</h2>
                              <ul id="menu-get-started" class="footer-menu-list">
                             <li class="menu-item menu-item-type-post_type menu-item-object-product">
-                                <a href="#">Non Profit Organization</a>
+                                <a href="#">Non Governmental Organization</a>
                             </li>
                             <li class="menu-item menu-item-type-post_type menu-item-object-product">
                                 <a href="#">Leadership</a>

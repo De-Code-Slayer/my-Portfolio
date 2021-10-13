@@ -39,3 +39,14 @@ $(".navbar-toggler").click(function(){
   setTimeout(function(){ test(); });
 });
 // ---------Responsive-navbar-active-animation-----------
+
+var myVar;
+
+function myFunction() {
+  myVar = setTimeout(showPage, 3000);
+}
+
+function showPage() {
+  document.getElementById("load").style.display = "none"
+  document.getElementById("loader").style.display = "none";
+}
