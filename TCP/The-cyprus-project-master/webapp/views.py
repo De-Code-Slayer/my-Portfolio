@@ -10,7 +10,9 @@ from . import db
 views = Blueprint("views", __name__)
 
 
-@views.route("/")
+
+
+@views.route("/" )
 def home():
 
     # Queries to database to get the post by the 5 most recents
@@ -32,7 +34,7 @@ def home():
     return render_template("index.html", user=current_user, content=post,  post_title=post_title, post_date=post_date, post_author=post_author, post_id=post_id,  id="!!")
 
 
-@views.route("/<id>")
+@views.route("/<id>/hh")
 def more(id):
     ident = id
 
@@ -150,7 +152,3 @@ def logout():
     return redirect(url_for("views.signin"))
 
 
-@views.errorhandler(404)
-def page_not_found(e):
-    # note that we set the 404 status explicitly
-    return render_template('404.html'), 404

@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,got_request_exception
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager, login_manager
@@ -20,8 +20,8 @@ def create_app():
  from .admin import admin
 
 
- app.register_blueprint(views)
- app.register_blueprint(admin, url_prefix="")
+ app.register_blueprint(views, url_prefix="/" )
+ app.register_blueprint(admin, url_prefix="/" )
 
  from .models import User, Articles
  create_database(app)
@@ -34,16 +34,21 @@ def create_app():
  @login_manager.user_loader
  def load_user(id):
     return User.query.get(int(id))
- 
- 
- 
- @app.errorhandler(404)
- def not_found(e):
-  
-# defining function
-  return render_template("404.html")
 
+
+ 
+
+ @app.errorhandler(404)
+ def page_not_found(error):
+    return render_template('page_not_found.html'), 404
+ 
  return app
+
+
+
+
+
+
 
 
 
