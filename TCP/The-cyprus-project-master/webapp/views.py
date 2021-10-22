@@ -50,7 +50,8 @@ def whatsapp():
         print(category)
         if category:
             whatsapp = category
-            return render_template("whatsapp.html", whatsapp, user=current_user,  id="!!")
+            return render_template("whatsapp.html", whatsapp=whatsapp, user=current_user,  id="!!")
+            
     # Queries to database to get All the whatsapp links
     whatsapp_groups = db.session.query(Whatsapp).all()
     return render_template("whatsapp.html", whatsapp=whatsapp_groups, user=current_user,  id="!!")
