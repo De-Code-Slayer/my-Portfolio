@@ -1,7 +1,8 @@
 from datetime import date, time
 
 from flask.helpers import flash
-from .models import Articles, Whatsapp, Howto, User
+from sqlalchemy.sql.expression import desc
+from .models import Articles, Whatsapp, Howto, User, University
 from flask import Blueprint, render_template, url_for, request, redirect, abort
 from flask_login import login_user, login_required, logout_user, current_user
 from . import db
@@ -75,7 +76,9 @@ def view_how_to(id):
 @views.route("/university")
 def university():
 
-    return render_template("university.html", user=current_user,  id="!!")
+    university = University.query.order_by(desc(University.school)).all()
+
+    return render_template("university.html", University=university, user=current_user,  id="!!")
 
 
 @views.route("/profile", methods=["GET", "POST"])

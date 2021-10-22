@@ -5,7 +5,7 @@ from flask_login import UserMixin
 from sqlalchemy.sql import func
 
 
-
+# Blog website --------------------------------------------
 class Articles(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     articles = db.Column(db.String())
@@ -14,7 +14,7 @@ class Articles(db.Model):
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     time = db.Column(db.DateTime)
     
-
+# ---------- Student--------------------------------------------------
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(150))
@@ -57,5 +57,11 @@ class Howto(db.Model):
 # ---------- students section---------
 
 
-  
-    
+class University(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    school = db.Column(db.String())
+    country = db.Column(db.String()) 
+    region = db.Column(db.String()) 
+    fee = db.Column(db.String()) 
+    schorlarship = db.Column(db.String())  
+    website = db.Column(db.String()) 

@@ -30,7 +30,7 @@ def administrator():
                 db.session.commit()
                 print("added")
                 flash("posted")
-#====------------------- Whatsapp section -------------------------------------------------------------
+#------------------- Whatsapp section -------------------------------------------------------------
          elif section == "Whatsapp":
                 print("Whatsapp")
          #add if statements to check if the links added are acutually valid
