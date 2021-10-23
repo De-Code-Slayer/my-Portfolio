@@ -38,226 +38,46 @@
                 <h3>Website</h3>
             </div>
         </div>
-    <div class="row justify-content-md-center">
-        <div class="col">
-            1
-        </div>
-            <div class="col">
-               Near East University
-            </div>
-            <div class="col">
-               Cyprus
-            </div>
-            <div class="col">
-               Lefkosa
-            </div>
-            <div class="col">
-                2400USD
-            </div>
-            <div class="col">
-                Available
-            </div>
-            <div class="col">
-                <a href="#" target="_blank" rel="noopener noreferrer">Link</a>
-            </div>
-        </div>
         <hr>
-        <div class="row justify-content-md-center">
+        {% if university %}
+           {% for i in university %}
+           <div class="row justify-content-md-center">
             <div class="col">
-                2
+                {{loop.index}}
             </div>
             <div class="col">
-                Eastern Meditereanan University
+                {{i.school}}
             </div>
             <div class="col">
-                Cyprus
+                {{i.country}}
             </div>
             <div class="col">
-                Lefkosa
+                {{i.country}}
             </div>
             <div class="col">
-                2400USD
+                € {{i.fee}}
             </div>
             <div class="col">
-                Available
+                {{i.schorlarship}}
             </div>
             <div class="col">
-                <a href="#" target="_blank" rel="noopener noreferrer">Link</a>
-            </div>
-        </div>
-        <hr>
-        <div class="row justify-content-md-center">
-            <div class="col">
-                3
-            </div>
-            <div class="col">
-                Cyprus International University
-            </div>
-            <div class="col">
-                Cyprus
-            </div>
-            <div class="col">
-                Lefkosa
-            </div>
-            <div class="col">
-                2400USD
-            </div>
-            <div class="col">
-                Available
-            </div>
-            <div class="col">
-                <a href="#" target="_blank" rel="noopener noreferrer">Link</a>
+                <a href="{{i.website}}" target="_blank" rel="noopener noreferrer">Visit Website</a>
             </div>
         </div>
-        <hr>
+         <hr>
+        {% endfor %}     
+        {% endif %}
+        
         <div class="row justify-content-md-center">
-            <div class="col">
-                4
-            </div>
-            <div class="col">
-               Kyrenia University
-            </div>
-            <div class="col">
-                Cyprus
-            </div>
-            <div class="col">
-                Lefkosa
-            </div>
-            <div class="col">
-                2400USD
-            </div>
-            <div class="col">
-                Available
-            </div>
-            <div class="col">
-                <a href="#" target="_blank" rel="noopener noreferrer">Link</a>
-            </div>
-        </div>
-        <hr>
-        <div class="row justify-content-md-center">
-            <div class="col">
-                5
-            </div>
-            <div class="col">
-                European University of Lefke
-            </div>
-            <div class="col">
-                Cyprus
-            </div>
-            <div class="col">
-                Lefke
-            </div>
-            <div class="col">
-                2400USD
-            </div>
-            <div class="col">
-                Available
-            </div>
-            <div class="col">
-                <a href="#" target="_blank" rel="noopener noreferrer">Link</a>
-            </div>
-        </div>
-        <hr>
-        <div class="row justify-content-md-center">
-            <div class="col">
-                6
-            </div>
-            <div class="col">
-               Girne American University
-            </div>
-            <div class="col">
-                Cyprus
-            </div>
-            <div class="col">
-                Girne
-            </div>
-            <div class="col">
-                2400USD
-            </div>
-            <div class="col">
-                Available
-            </div>
-            <div class="col">
-                <a href="#" target="_blank" rel="noopener noreferrer">Link</a>
-            </div>
-        </div>
-        <hr>
-        <div class="row justify-content-md-center">
-            <div class="col">
-               7
-            </div>
-            <div class="col">
-                Bahceschir Cyprus University
-            </div>
-            <div class="col">
-                Cyprus
-            </div>
-            <div class="col">
-                Lefkosa
-            </div>
-            <div class="col">
-                2400USD
-            </div>
-            <div class="col">
-                Not-Available
-            </div>
-            <div class="col">
-                <a href="#" target="_blank" rel="noopener noreferrer">Link</a>
-            </div>
-        </div>
-        <hr>
-        <div class="row justify-content-md-center">
-            <div class="col">
-               8
-            </div>
-            <div class="col">
-               University Of Mediterrenean Karpasia 
-            </div>
-            <div class="col">
-                Cyprus
-            </div>
-            <div class="col">
-                Lefkosa
-            </div>
-            <div class="col">
-                2400USD
-            </div>
-            <div class="col">
-                Not-Available
-            </div>
-            <div class="col">
-                <a href="#" target="_blank" rel="noopener noreferrer">Link</a>
-            </div>
-        </div>
-        <hr>
-        <div class="row justify-content-md-center">
-            <div class="col">
-                9
-            </div>
-            <div class="col">
-               Istanbul Technical University
-            </div>
-            <div class="col">
-                Turkey
-            </div>
-            <div class="col">
-                Istanbul
-            </div>
-            <div class="col">
-                2400USD
-            </div>
-            <div class="col">
-                Available
-            </div>
-            <div class="col">
-                <a href="#" target="_blank" rel="noopener noreferrer">Link</a>
-            </div>
-        </div>
+
+
+
     </div>
 <hr>
     <h2  style="margin: 40px 0;"> Requirements To Study in Cyprus</h2>
     <div class="container">
         <ol>
+
             <li><b>International Passport Valid for 3 years</b></li>
             <li><b>Bachelors certificate & Transcript (Masters)/ High school Leaving Certificate(Under Graduate)</b></li>
             <li><b>6 Passport Photographs</b></li>
@@ -271,6 +91,7 @@
     <div class="container">
         <ol>
             <li><b>International Passport Valid for 3 years</b></li>
+            <li><b>TOEFL/IELTS</b></li>
             <li><b>Bachelors certificate & Transcript (Masters)/ High school Leaving Certificate(Under Graduate)</b></li>
             <li><b>14 Passport Photographs</b></li>
             <li><b>Visa</b></li>

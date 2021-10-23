@@ -36,7 +36,7 @@ class User(db.Model, UserMixin):
     visa = db.Column(db.Integer())
     flight = db.Column(db.Integer())
     arrival = db.Column(db.Integer())
-    
+    admin = db.Column(db.Boolean, default=False)
 #-------------------------------  end of database for blog -------------------------------------
 
 

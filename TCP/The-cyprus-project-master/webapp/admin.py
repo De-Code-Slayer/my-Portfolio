@@ -77,12 +77,14 @@ def login():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
-        user = User.query.filter_by(user_name=username, password=password).first()
+        user = User.query.filter_by(user_name=username, password=password, admin="True").first()
+        
+
         if user:
            login_user(user, remember=True)
            return redirect(url_for("admin.administrator"))
-        if not user:
-            print(username)
+        if  user == None:
+            print("user is none")
             flash("No administrator found")
 
     return render_template("admin_login.html")
