@@ -86,9 +86,9 @@ def university():
 @login_required
 def profile():
     if request.method == "POST":
-        school = str(request.form.get("university"))
-        course = str(request.form.get("course"))
-        degree = str(request.form.get("degree"))
+        school = str(request.form.get("university")).title()
+        course = str(request.form.get("course")).title()
+        degree = str(request.form.get("degree")).title()
         email = current_user.email
         application = User.query.filter_by(email=email).first()
         print(application)
@@ -104,13 +104,13 @@ def profile():
 @views.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
-        first_name = str(request.form.get("first-name"))
-        last_name = str(request.form.get("last-name"))
-        nationality = str(request.form.get("nationality"))
+        first_name = str(request.form.get("first-name")).title()
+        last_name = str(request.form.get("last-name")).title()
+        nationality = str(request.form.get("nationality")).title()
         age = str(request.form.get("age"))
         email = str(request.form.get("email"))
-        phone = str(request.form.get("phone"))
-        occupation = str(request.form.get("occupation"))
+        phone = str(request.form.get("phone")).title()
+        occupation = str(request.form.get("occupation")).title()
         password = str(request.form.get("password"))
 
         check = User.query.filter_by(

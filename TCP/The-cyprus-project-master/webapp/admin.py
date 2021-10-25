@@ -2,7 +2,7 @@ from typing import AsyncGenerator
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from .models import User
 from datetime import timedelta, datetime
-from .models import Articles, Whatsapp, Howto
+from .models import Articles, Whatsapp, Howto, University
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
@@ -20,9 +20,9 @@ def administrator():
          if section == "Blog":
                 print("Blog")
          #add if statements to check if the post added are long enough and acutually valid
-                articletitle = str(request.form.get("articletitle"))
-                articles = str(request.form.get("articles"))
-                author = str(request.form.get("author"))
+                articletitle = str(request.form.get("articletitle")).title()
+                articles = str(request.form.get("articles")).title()
+                author = str(request.form.get("author")).title()
 
                 new_article = Articles(
             articles=articles, author=author, articletitle=articletitle)
@@ -34,9 +34,9 @@ def administrator():
          elif section == "Whatsapp":
                 print("Whatsapp")
          #add if statements to check if the links added are acutually valid
-                whatsapp_title = str(request.form.get("whatsapp_title"))
-                whatsapp_link = str(request.form.get("Whatsapp_link"))
-                institute = str(request.form.get("Institute"))
+                whatsapp_title = str(request.form.get("whatsapp_title")).title()
+                whatsapp_link = str(request.form.get("Whatsapp_link")).title()
+                institute = str(request.form.get("Institute")).title()
 
                 new_whatsapp = Whatsapp(
                     name=whatsapp_title, link=whatsapp_link, institute=institute)
@@ -51,8 +51,8 @@ def administrator():
          elif section == "HowTo":
                 print("Howto")
          #add if statements to check if the links added are acutually valid
-                title = str(request.form.get("title"))
-                content = str(request.form.get("content"))
+                title = str(request.form.get("title")).title()
+                content = str(request.form.get("content")).title()
 
      
                 new_howto = Howto(
@@ -61,6 +61,23 @@ def administrator():
                 db.session.commit()
                 print("added")
                 flash("Howto updated")
+         
+         elif section == "University":
+                print("University")
+         #add if statements to check if the links added are acutually valid
+                school = str(request.form.get("school")).title()
+                region = str(request.form.get("region")).title()
+                schorlarship = str(request.form.get("Schorlarship")).title()
+                fee = str(request.form.get("Fee")).title()
+                website = str(request.form.get("Website")).title()
+                country = str(request.form.get("country")).title()
+     
+                new_university = University(
+                    school=school, region=region, schorlarship=schorlarship, fee=fee, country=country, website=website)
+                db.session.add(new_university)
+                db.session.commit()
+                print("added")
+                flash("University updated")
 
          
          
